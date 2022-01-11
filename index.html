@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Javascript skills Checker!</title>
-    <script src="./develop/script.js"></script>
+
     <link rel="stylesheet" href="./develop/style.css" />
   </head>
   <body>
@@ -17,25 +17,29 @@
         <h2>View Highscores</h2>
       </div>
       <div class="timer">
-        <h2>Timer</h2>
+        <h2 id="time">Timer</h2>
       </div>
     </div>
     <br />
     <br />
     <br />
 
-    <div class="box">
-      <textarea <p id="questionsarea">
+    <div id="box">
+      <div id="questionsarea">
         "Have you mastered Javascript? Click Start Quiz NOW to take the ultimate
         Javascript quiz and see how your results compare with your Bootcamp
         peers!"
-    
-    </p>
-      </textarea>
+      </div>
+      <!-- 
+      <button id="a">A</button>
+      <button id="b">B</button>
+      <button id="c">C</button>
+      <button id="d">D</button> -->
     </div>
     <br />
     <br />
-    <button id="start" class="btn">Start Quiz NOW</button>
-    <!-- <button>Nah, I need more practice</button> -->
+    <button id="start">Start Quiz NOW</button>
+
+    <script src="./develop/script.js"></script>
   </body>
 </html>

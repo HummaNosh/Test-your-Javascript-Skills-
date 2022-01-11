@@ -30,11 +30,12 @@ p {
   text-align: center;
   font-size: 25px;
   font-family: "Courier New", Courier, monospace;
+  height: fit-content;
 }
 
-.box {
+#box {
   width: 50rem;
-  height: 10rem;
+  height: 20rem;
   margin: 0;
   margin-left: 28rem;
   display: flex;
@@ -42,28 +43,48 @@ p {
   outline: dashed 1px black;
 }
 
-#questionsarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  display: block;
-  width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
-  resize: none;
-  overflow: hidden;
-  color: black;
-}
 #start {
   margin: 0;
   margin-left: 50rem;
+}
+
+#questionsarea {
+  height: fit-content;
+  width: 50%;
+}
+
+#a {
+  display: flex;
+  margin-left: 10rem;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-color: red;
+    width: 50rem;
+  }
+
+  header {
+    display: flex;
+  }
+
+  #box {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 75%;
+    margin-left: 0rem;
+  }
+
+  .highscores {
+    margin-left: 0;
+  }
+  .timer {
+    margin-left: 0;
+  }
+
+  #start {
+    margin-left: 0;
+  }
 }
