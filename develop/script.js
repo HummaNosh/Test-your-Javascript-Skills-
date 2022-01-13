@@ -31,16 +31,6 @@ document.body.appendChild(buttonC);
 // -----------------------------------------------------------------
 // QUESTIONS
 
-let questions = [
-  {
-    Q1: "Which of the following is the correct way to create a function?",
-    A: "function generatePassword(){}",
-    B: "function name = generatePassword () {}",
-    C: "function = generatePassword(){}",
-    Answer: "A",
-  },
-];
-
 function StartQuiz() {
   var quizing = generateQuestions();
   displayquestions();
@@ -66,33 +56,66 @@ function generateQuestions() {
   setTime();
   // -------------------------------------------------------------------------
 }
-let guess = [];
+
+let questions = [
+  "bllla",
+  {
+    question: "Which of the following is the correct way to create a function?",
+    answers: [
+      { A: "function generatePassword(){}", correct: true },
+      { B: "function name = generatePassword () {}", correct: false },
+      { C: "function = generatePassword(){}", correct: false },
+    ],
+  },
+];
 
 function displayquestions() {
   let quiz = questions;
 
   // which button is each option is linked to
-  buttonA = questions.A;
-  buttonB = questions.B;
-  buttonC = questions.C;
-  buttonD = questions.D;
 
   // in the main box - give me Q1 of the quiz(questions)
   // WORK ON THISS
+  // questionsarea.innerHTML = quiz.Q1;
+  // for (i = 0; i < questions.length; i++) {
+  //   // const character = questions.charAt(i);
+  //   // if (guess.indexOf(character) > 0) {
+  //   return "";
+
   questionsarea.innerHTML = quiz.Q1;
-  for (i = 0; i < questions.length; i++) {
-    // const character = questions.charAt(i);
-    // if (guess.indexOf(character) > 0) {
-    return "";
-  }
+
+  buttonA = quiz.A;
+  buttonB = quiz.B;
+  buttonC = quiz.C;
 }
 
 console.log(questions);
+console.log(questions.A);
 
-// FIND OUT WHY A IS NOT DEFINED....
+// MAKE CORRECT SHOW UP IN H2
+function selectAnswer(ans) {
+  var select = ans.target;
+  var correct = select.dataset.correct;
+  checkAns.classList.remove("hide");
+  if (correct) {
+    checkAns.innerHTML = "CORRECT! Nice one!";
+  } else {
+    checkAns.innerHTML = "Wrong! Try again!";
+    if (timeLeft <= 10) {
+      timeLeft = 0;
+    } else {
+      timeLeft -= 10;
+    }
+  }
+}
 
-// FIGURE OUT HOW TO CHANGE THE MINUS -NEEDS TO STOP ON 0
-
+// MAKE SURE OPTION BUTTONS WWORK
+// MAKE SURE YOU DEFINE THE QS IN THE BOX
+// STOP THE TIMER AT 0
+// FIND OUT HOW TO STORE HIGHSCORES-INITIALS
+// HOW TO ADD CORRECT AND INCORRECT
+// SUBTRACT CLOCK IF INCORRECT
+// WHEN TIMER REACHES 0 -GAME OVER
 // -------------------------------------------------------------------------------
 
 // 1.Which of the following is the correct way to create a function?

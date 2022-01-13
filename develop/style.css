@@ -49,8 +49,11 @@ p {
 }
 
 #questionsarea {
+  margin-top: 2rem;
   height: fit-content;
-  width: 50%;
+  width: 45rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 35px;
 }
 
 #a {
