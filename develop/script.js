@@ -29,7 +29,6 @@ buttonC.addEventListener("click", function () {
 document.body.appendChild(buttonC);
 
 // -----------------------------------------------------------------
-// QUESTIONS
 
 function StartQuiz() {
   var quizing = generateQuestions();
@@ -57,6 +56,9 @@ function generateQuestions() {
   // -------------------------------------------------------------------------
 }
 
+// ----------------------------------------------------------------------------
+
+// QUESTIONS
 let questions = [
   "bllla",
   {
