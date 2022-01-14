@@ -1,32 +1,14 @@
 // Button ID
 let startBtn = document.getElementById("start");
 // Job of the button
-startBtn.addEventListener("click", StartQuiz, displayquestions);
+startBtn.addEventListener("click", StartQuiz, displayquestions, selectAnswer);
 
+let questionsarea = document.getElementById("questionsarea");
+
+let checkAns = document.getElementById("checkAns");
+
+let Ans = document.getElementById("Ans");
 // ----------------------------------------------------------------
-// OPTION BUTTONS
-
-// MAKE SURE THE FUNCTION OF THE BUTTON WORKS......
-let buttonA = document.createElement("button");
-buttonA.innerHTML = "A";
-buttonA.addEventListener("click", function () {
-  console.log("clicked a");
-});
-document.body.appendChild(buttonA);
-
-let buttonB = document.createElement("button");
-buttonB.innerHTML = "B";
-buttonB.addEventListener("click", function () {
-  console.log("clicked b");
-});
-document.body.appendChild(buttonB);
-
-let buttonC = document.createElement("button");
-buttonC.innerHTML = "C";
-buttonC.addEventListener("click", function () {
-  console.log("clicked c");
-});
-document.body.appendChild(buttonC);
 
 // -----------------------------------------------------------------
 
@@ -49,10 +31,12 @@ function generateQuestions() {
       timeEl.textContent = secondsLeft + " seconds remaining..";
       if (secondsLeft === 0) {
         timeEl.textContent = " YOUR TIME IS UP!!!";
+        clearInterval(timerInterval);
       }
     }, 1000);
   }
   setTime();
+
   // -------------------------------------------------------------------------
 }
 
@@ -60,44 +44,93 @@ function generateQuestions() {
 
 // QUESTIONS
 let questions = [
-  "bllla",
   {
     question: "Which of the following is the correct way to create a function?",
-    answers: [
-      { A: "function generatePassword(){}", correct: true },
-      { B: "function name = generatePassword () {}", correct: false },
-      { C: "function = generatePassword(){}", correct: false },
-    ],
+
+    A: "A. function generatePassword(){}",
+    correct: true,
+    B: "B. function name = generatePassword () {}",
+    correct: false,
+    C: "C. function = generatePassword(){}",
+    correct: false,
   },
 ];
+
+let options = document.getElementById("options");
+let optiona = document.getElementById("optiona");
 
 function displayquestions() {
   let quiz = questions;
 
-  // which button is each option is linked to
+  // ----------------------------------------------------------------------------------
+  // OPTION BUTTONS
 
-  // in the main box - give me Q1 of the quiz(questions)
-  // WORK ON THISS
-  // questionsarea.innerHTML = quiz.Q1;
-  // for (i = 0; i < questions.length; i++) {
-  //   // const character = questions.charAt(i);
-  //   // if (guess.indexOf(character) > 0) {
-  //   return "";
+  let Nextbtn = document.createElement("button");
+  Nextbtn.innerHTML = "NEXT";
+  Nextbtn.addEventListener("click", NEXT(), function () {
+    console.log("clicked NEXT");
+  });
+  document.body.appendChild(Nextbtn);
 
-  questionsarea.innerHTML = quiz.Q1;
+  // MAKE SURE THE FUNCTION OF THE BUTTON WORKS......
 
+  let buttonA = document.createElement("button");
+  buttonA.innerHTML = "A";
+  buttonA.addEventListener("click", function () {
+    console.log("clicked a");
+  });
+  document.body.appendChild(buttonA);
+
+  let buttonB = document.createElement("button");
+  buttonB.innerHTML = "B";
+  buttonB.addEventListener("click", function () {
+    console.log("clicked b");
+  });
+  document.body.appendChild(buttonB);
+
+  let buttonC = document.createElement("button");
+  buttonC.innerHTML = "C";
+  buttonC.addEventListener("click", function () {
+    console.log("clicked c");
+  });
+  document.body.appendChild(buttonC);
+
+  // ----------------------------------------------------------------------------------
+
+  function NEXT() {
+    questionsarea.innerHTML =
+      quiz[0].question + quiz[0].A + quiz[0].B + quiz[0].C;
+  }
+
+  // do a for loop - var = 0...something somehing fig ure out
+  // then for buttons you need to clear buttons after every answer
   buttonA = quiz.A;
   buttonB = quiz.B;
-  buttonC = quiz.C;
+
+  if ((quiz[0].correct = true)) {
+    checkAns.innerHTML = "CORRECT! Nice one!";
+  } else {
+    checkAns.innerHTML = "Wrong! Try again!";
+  }
+
+  var allAnswers = Ans.querySelectorAll(".answer");
+  for (var i = 0; i < allAnswers.length; i++) {
+    allAnswers[i].setAttribute("onclick", "selectAnswer");
+  }
+
+  console.log(quiz[0].correct);
+  console.log(checkAns);
+  console.log(quiz[0].A);
+  console.log(quiz[0].B);
 }
 
 console.log(questions);
-console.log(questions.A);
 
 // MAKE CORRECT SHOW UP IN H2
 function selectAnswer(ans) {
   var select = ans.target;
   var correct = select.dataset.correct;
+
   checkAns.classList.remove("hide");
   if (correct) {
     checkAns.innerHTML = "CORRECT! Nice one!";
@@ -113,7 +146,7 @@ function selectAnswer(ans) {
 
 // MAKE SURE OPTION BUTTONS WWORK
 // MAKE SURE YOU DEFINE THE QS IN THE BOX
-// STOP THE TIMER AT 0
+
 // FIND OUT HOW TO STORE HIGHSCORES-INITIALS
 // HOW TO ADD CORRECT AND INCORRECT
 // SUBTRACT CLOCK IF INCORRECT
