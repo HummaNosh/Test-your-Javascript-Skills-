@@ -12,7 +12,11 @@ h1 {
   flex-direction: row;
 }
 h2 {
+  font-family: "Courier New", Courier, monospace;
   text-align: center;
+}
+
+#time {
 }
 .highscores {
   width: fit-content;
@@ -50,10 +54,11 @@ p {
 
 #questionsarea {
   margin-top: 2rem;
+  margin-left: 30rem;
   height: fit-content;
   width: 45rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 35px;
+  font-size: 40px;
 }
 
 #options {
@@ -67,7 +72,22 @@ p {
 #a,
 #b,
 #c {
+  font-size: 2rem;
+  width: fit-content;
   background-color: red;
+}
+
+.option {
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-left: 30rem;
+}
+
+.comment {
+  margin-top: 1rem;
+  margin-left: 30rem;
+  font-size: 3rem;
+  color: red;
 }
 
 @media (max-width: 768px) {
