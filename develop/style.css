@@ -56,18 +56,18 @@ p {
   font-size: 35px;
 }
 
-#a {
-  display: flex;
-  margin-left: 10rem;
-  flex-direction: column;
-}
-
 #options {
   margin-top: 10rem;
   height: fit-content;
   width: fit-content;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 35px;
+}
+
+#a,
+#b,
+#c {
+  background-color: red;
 }
 
 @media (max-width: 768px) {

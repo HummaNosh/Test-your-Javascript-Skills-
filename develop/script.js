@@ -1,181 +1,196 @@
-// Button ID
-let startBtn = document.getElementById("start");
-// Job of the button
-startBtn.addEventListener("click", StartQuiz, displayquestions, selectAnswer);
+// ALL VARIABLES AND ELEMENTS.....
 
 let questionsarea = document.getElementById("questionsarea");
+let a = document.querySelector("#a");
+let b = document.querySelector("#b");
+let c = document.querySelector("#c");
+let Options = document.querySelectorAll(".option");
+let Pick = document.querySelector("#pick");
+let checker = document.querySelector("#check");
 
-let checkAns = document.getElementById("checkAns");
-
-let Ans = document.getElementById("Ans");
-// ----------------------------------------------------------------
-
-// -----------------------------------------------------------------
-
-function StartQuiz() {
-  var quizing = generateQuestions();
-  displayquestions();
-}
-
-function generateQuestions() {
-  // -------------------------------------------------------------------
-  // TIMER FUNCTION
-  console.log("Button clicked, timer ON");
-  var timeEl = document.getElementById("time");
-  // how many seconds
-  var secondsLeft = 50;
-  // timer function
-  function setTime() {
-    var timerInterval = setInterval(function () {
-      secondsLeft--;
-      timeEl.textContent = secondsLeft + " seconds remaining..";
-      if (secondsLeft === 0) {
-        timeEl.textContent = " YOUR TIME IS UP!!!";
-        clearInterval(timerInterval);
-      }
-    }, 1000);
-  }
-  setTime();
-
-  // -------------------------------------------------------------------------
-}
-
-// ----------------------------------------------------------------------------
-
-// QUESTIONS
+// MULTI CHOICE QUESTIONS
 let questions = [
   {
     question: "Which of the following is the correct way to create a function?",
 
     A: "A. function generatePassword(){}",
-    correct: true,
     B: "B. function name = generatePassword () {}",
-    correct: false,
     C: "C. function = generatePassword(){}",
-    correct: false,
+    ans: "A. function generatePassword(){}",
+  },
+
+  {
+    question: "Which of the below is the correct way to declare a variable?",
+    A: "var food;",
+    B: "variable food;",
+    C: "v food;",
+    ans: "var food;",
+  },
+
+  {
+    question:
+      "Which syntax of the below is used when you want to link an external javascript file?",
+    A: "<script href = script.jss></script>",
+    B: "<script src = script.jss></script>",
+    C: "<script name = script.jss></script>",
+    ans: "<script src = script.jss></script>",
   },
 ];
 
-let options = document.getElementById("options");
-let optiona = document.getElementById("optiona");
+// Button ID
+let startBtn = document.getElementById("start");
+// Job of the button
+startBtn.addEventListener("click", function () {
+  StartQuiz, displayquestions();
+});
+
+// -----------------------------------------------------------------
+// Start...
+function StartQuiz() {
+  displayquestions();
+  setTime();
+}
+
+// -------------------------------------------------------------------
+// TIMER JOB..
+console.log("Button clicked, timer ON");
+var timeEl = document.getElementById("time");
+// how many seconds
+var secondsLeft = 50;
+
+// Timer function
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds remaining..";
+    if (secondsLeft === 0) {
+      timeEl.textContent = " YOUR TIME IS UP!!!";
+      clearInterval(timerInterval);
+    }
+  }, 1000);
+}
+setTime();
+
+// -------------------------------------------------------------------------
+
+let Q1 = 0;
+let Q5 = questions.length - 1;
+let result = 0;
 
 function displayquestions() {
   let quiz = questions;
 
-  // ----------------------------------------------------------------------------------
-  // OPTION BUTTONS
+  // BRING UP THE QUESTIONS...
+  questionsarea.innerHTML = quiz[0].question;
 
-  let Nextbtn = document.createElement("button");
-  Nextbtn.innerHTML = "NEXT";
-  Nextbtn.addEventListener("click", NEXT(), function () {
-    console.log("clicked NEXT");
-  });
-  document.body.appendChild(Nextbtn);
+  // BRING UP THE OPTIONS..
+  a.innerHTML = quiz[0].A;
+  b.innerHTML = quiz[0].B;
+  c.innerHTML = quiz[0].C;
 
-  // MAKE SURE THE FUNCTION OF THE BUTTON WORKS......
+  // var randomSelection =
+  // for (var i = 0, length = questionsarea.length; i < length; i++) {}
 
-  let buttonA = document.createElement("button");
-  buttonA.innerHTML = "A";
-  buttonA.addEventListener("click", function () {
-    console.log("clicked a");
-  });
-  document.body.appendChild(buttonA);
+  // BRING UP THE OPTIONS AND CHECK IF THE ANSWER IS CORRECT
+  Options.forEach((optionButton) => {
+    optionButton.addEventListener("click", function () {
+      let selectedbyuser = optionButton.textContent;
+      checkAns(selectedbyuser);
+    });
 
-  let buttonB = document.createElement("button");
-  buttonB.innerHTML = "B";
-  buttonB.addEventListener("click", function () {
-    console.log("clicked b");
-  });
-  document.body.appendChild(buttonB);
+    // ----------------------------------------------------------------------------------
+    // next BUTTON
 
-  let buttonC = document.createElement("button");
-  buttonC.innerHTML = "C";
-  buttonC.addEventListener("click", function () {
-    console.log("clicked c");
-  });
-  document.body.appendChild(buttonC);
+    // WORK ON THISSSSSSSS
+    let NextEl = document.createElement("button");
+    NextEl.innerHTML = "NEXT";
+    NextEl.addEventListener("click", function () {
+      console.log("clicked NEXT");
+    });
+    document.body.appendChild(NextEl);
 
-  // ----------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------
 
-  function NEXT() {
-    questionsarea.innerHTML =
-      quiz[0].question + quiz[0].A + quiz[0].B + quiz[0].C;
-  }
+    // WHEN THE CORRECT ANSWER IS CLICKED.....
+    function correctAns() {
+      Pick.className = "addedStyle";
+      checker.className = "comment";
+      checker.innerHTML = "<div>" + "CORRECT! KEEP IT UP!" + "</div>";
+      console.log("CORRECT MATE!");
 
-  // do a for loop - var = 0...something somehing fig ure out
-  // then for buttons you need to clear buttons after every answer
-  buttonA = quiz.A;
-  buttonB = quiz.B;
-
-  if ((quiz[0].correct = true)) {
-    checkAns.innerHTML = "CORRECT! Nice one!";
-  } else {
-    checkAns.innerHTML = "Wrong! Try again!";
-  }
-
-  var allAnswers = Ans.querySelectorAll(".answer");
-  for (var i = 0; i < allAnswers.length; i++) {
-    allAnswers[i].setAttribute("onclick", "selectAnswer");
-  }
-
-  console.log(quiz[0].correct);
-  console.log(checkAns);
-  console.log(quiz[0].A);
-  console.log(quiz[0].B);
-}
-
-console.log(questions);
-
-// MAKE CORRECT SHOW UP IN H2
-function selectAnswer(ans) {
-  var select = ans.target;
-  var correct = select.dataset.correct;
-
-  checkAns.classList.remove("hide");
-  if (correct) {
-    checkAns.innerHTML = "CORRECT! Nice one!";
-  } else {
-    checkAns.innerHTML = "Wrong! Try again!";
-    if (timeLeft <= 10) {
-      timeLeft = 0;
-    } else {
-      timeLeft -= 10;
+      setTimeout(function () {
+        clearCheck();
+      }, 2000);
     }
-  }
+
+    // WHEN THE WRONG ANSWER IS CLICKED TAKE AWAY 10 SECONDS...
+    function wrongAns() {
+      secondsLeft -= 10;
+      Pick.className = "addedStyle";
+      checker.className = "comment";
+      checker.innerHTML = "<div>" + "WRONG! YOU LOSE 10 SECONDS! " + "</div>";
+
+      setTimeout(function () {
+        clearCheck();
+      }, 2000);
+    }
+
+    // THIS CLEARS THE CORRECT/WRONG COMMENTS ONCE ANSWERED
+    function clearCheck() {
+      Pick.classList.remove("addedStyle");
+      checker.classList.remove("comment");
+      checker.innerHTML = "<div>" + "" + "</div>";
+    }
+
+    // -----------------------------------------------------------------
+    function checkAns(ans) {
+      console.log(ans);
+
+      if (Q1 === Q5) {
+        gameOver();
+      }
+      if (questions[Q1].ans === ans) {
+        result++;
+        Q1++;
+        correctAns();
+        displayquestions();
+        console.log("correct answer worked");
+      } else {
+        Q1++;
+        wrongAns();
+        displayquestions();
+      }
+    }
+
+    function gameOver() {
+      checker.innerHTML =
+        "<div>" +
+        "YOU LOSE!!! GAME OVER! HEAD OVER TO KENNYS WORKSHOP TO LEARN MORE ABOUT JAVASCRIPT " +
+        "</div>";
+    }
+
+    //     var randomSelection =
+    // for (var i = 0, length = questionsarea.length; i < length; i++) {}
+    // questionsarea.innerHTML =
+    //   quiz[1].question + quiz[1].A + quiz[1].B + quiz[1].C;
+
+    // do a for loop - var = 0...something somehing fig ure out
+    // then for buttons you need to clear buttons after every answer
+
+    // MAKE SURE OPTION BUTTONS WWORK
+    // MAKE SURE YOU DEFINE THE QS IN THE BOX
+
+    // FIND OUT HOW TO STORE HIGHSCORES-INITIALS
+    // HOW TO ADD CORRECT AND INCORRECT
+
+    // WHEN TIMER REACHES 0 -GAME OVER
+    // -------------------------------------------------------------------------------
+
+    // 5;which of the following is the correct way to write "I want food" in an alert box?
+    // alertBox("I want food");
+    // msgBox("I want food");
+    // alert("I want food");
+
+    // make sure this is responsive
+  });
 }
-
-// MAKE SURE OPTION BUTTONS WWORK
-// MAKE SURE YOU DEFINE THE QS IN THE BOX
-
-// FIND OUT HOW TO STORE HIGHSCORES-INITIALS
-// HOW TO ADD CORRECT AND INCORRECT
-// SUBTRACT CLOCK IF INCORRECT
-// WHEN TIMER REACHES 0 -GAME OVER
-// -------------------------------------------------------------------------------
-
-// 1.Which of the following is the correct way to create a function?
-// function generatePassword(){}
-// function name = generatePassword () {}
-// function = generatePassword(){}
-
-// 2; which way is the correct way to display an array?
-// var food = "chips", "steak", "pasta", "pizza"
-// var food = (chips, steak, pasta, pizza)
-// var food = ["chips", "steak", "pasta", "pizza"]
-
-// 3; how do you declare a variable?
-// var food;
-// variable food;
-// v food;
-
-// 4. which syntax is used when you want to link an external javascript file?
-// <script href = "script.jss"></script>
-// <script src = "script.jss"></script>
-// <script name = "script.jss"></script>
-
-// 5;which of the following is the correct way to write "I want food" in an alert box?
-// alertBox("I want food");
-// msgBox("I want food");
-// alert("I want food");
-
-// make sure this is responsive
