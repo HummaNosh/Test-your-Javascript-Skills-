@@ -35,21 +35,39 @@
       
       
             </div>
-            <div class="hide" id="pick">
+            <div class="challenge" id="challenge">
               
             <div class="option choice1 btn"  id="a"></div>
             <div class="option choice2 btn" id="b"></div>
             <div class="option choice3 btn"  id="c"></div>
           </div>
-          <div id="check"></div>
-          </div>
-        </div>
+        </div> 
       </div>
     </div>
     <br />
     <br />
     <button id="start">Start Quiz NOW</button>
+    <div id="check"></div>
+          
+  </div>
+    <div class="hide" id="pick">
+    </div>
 
+    <section>
+      <form action="">
+          <div class="results hide" id="results">
+              <!-- <h2 class="done" id="done">Well Done! You have finally completed this Quiz, See below for your score</h2> -->
+              <div class="finalResult" id="finalResult">
+                  <p>
+                       Your final score is: <span class="finalScore" id="finalScore"></span> 
+                  </p>
+              </div>
+              <label for="userInitial">Enter your initials here: </label>
+              <input type="text" class="userInitial" id="userInitial">
+              <button class="submitBtn btn" id="submitBtn">Submit</button>
+          </div>
+      </form>
+  </section>
     <script src="./develop/script.js"></script>
   </body>
 </html>

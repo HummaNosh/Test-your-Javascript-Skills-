@@ -1,3 +1,10 @@
+// Button ID
+let startBtn = document.getElementById("start");
+// Job of the button
+startBtn.addEventListener("click", function () {
+  StartQuiz();
+});
+
 // ALL VARIABLES AND ELEMENTS.....
 
 let questionsarea = document.getElementById("questionsarea");
@@ -7,11 +14,18 @@ let c = document.querySelector("#c");
 let Options = document.querySelectorAll(".option");
 let Pick = document.querySelector("#pick");
 let checker = document.querySelector("#check");
+let initialEl = document.getElementById("userInitial");
+let challengeEl = document.getElementById("challenge");
+let resultsEl = document.getElementById("results");
+var finalScoreEl = document.querySelector(".finalScore");
+let submitBtnEl = document.querySelector("#submitBtn");
+let scorePercentage = "";
 
 // MULTI CHOICE QUESTIONS
 let questions = [
   {
-    question: "Which of the following is the correct way to create a function?",
+    question:
+      "Q1. Which of the following is the correct way to create a function?",
 
     A: "A. function generatePassword(){}",
     B: "B. function name = generatePassword () {}",
@@ -20,62 +34,118 @@ let questions = [
   },
 
   {
-    question: "Which of the below is the correct way to declare a variable?",
-    A: "var food;",
-    B: "variable food;",
-    C: "v food;",
-    ans: "var food;",
+    question:
+      "Q2. Which of the below is the correct way to declare a variable?",
+    A: "A. var food;",
+    B: "B. variable food;",
+    C: "C. v food;",
+    ans: "A. var food;",
+  },
+  {
+    question: "Q3. Is Javascript a case sensitive language? ",
+    A: "A. No",
+    B: "B. Yes",
+    C: "C. Depends on the word",
+    ans: "B. Yes",
   },
   {
     question:
-      "Which syntax of the below is used when you want to link an external javascript file?",
-    A: "<script href = script.jss></script>",
-    B: "<script src = script.jss></script>",
-    C: "<script name = script.jss></script>",
-    ans: "<script src = script.jss></script>",
+      "Q4. Which of the below is the correct way to comment in Javascript?",
+    A: "A. #....This is a comment....#",
+    B: "B. \\....This is a comment...\\",
+    C: "C. //....This is a comment...//",
+    ans: "C. //....This is a comment...//",
+  },
+
+  {
+    question:
+      "Q5. Which of the following event occurs when a HTML element is clicked by the user?",
+    A: "A. onmouseclick",
+    B: "B. onclick",
+    C: "C. onmouseClick",
+    ans: "B. onclick",
+  },
+
+  {
+    question: "Q6. How do you select a HTML element by ID in Javascript?",
+    A: "A. document.getElementById()",
+    B: "B. window.getElementById()",
+    C: "C. pullHTMLpage.getElementById()",
+    ans: "A. document.getElementById()",
+  },
+
+  {
+    question:
+      "Q7. Which of the below is used to identify the type of data type?",
+    A: "A. isarrayType",
+    B: "B. dataisTypeOf",
+    C: "C. typeof",
+    ans: "C. typeof",
+  },
+
+  {
+    question: "Q8. Which of the below TAG <> is used to put Javascript inside?",
+    A: "A. scripting",
+    B: "B. javascript",
+    C: "C. script",
+    ans: "C. script",
+  },
+
+  {
+    question: "Q9. How do you write 'Hello Suckers!' in an alert box?",
+    A: "A. msg('Hello Suckers!')",
+    B: "B. alert('Hello Suckers!')",
+    C: "C. alertBox('Hello Suckers!')",
+    ans: "B. alert('Hello Suckers!')",
+  },
+
+  {
+    question: "Q10. How do you create a function? Pick on from the below",
+    A: "A. function Hello()",
+    B: "B. function.Hello()",
+    C: "C. function = Hello()",
+    ans: "A. function Hello()",
   },
 ];
 
-// Button ID
-let startBtn = document.getElementById("start");
-// Job of the button
-startBtn.addEventListener("click", function () {
-  StartQuiz, displayquestions();
-});
-
 // -----------------------------------------------------------------
 // Start...
-function StartQuiz() {
-  displayquestions();
-  setTime();
-}
 
-// -------------------------------------------------------------------
 // TIMER JOB..
 console.log("Button clicked, timer ON");
 var timeEl = document.getElementById("time");
+
 // how many seconds
 var secondsLeft = 50;
 
-// Timer function
-function setTime() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds remaining..";
-    if (secondsLeft === 0) {
-      timeEl.textContent = " YOUR TIME IS UP!!!";
-      clearInterval(timerInterval);
-    }
-  }, 1000);
-}
-setTime();
+function StartQuiz() {
+  displayquestions();
+  setTime();
 
+  // -------------------------------------------------------------------
+
+  // THIS GOES TO MINUS
+
+  // Timer function
+  function setTime() {
+    var timerInterval = setInterval(function () {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft + " seconds remaining..";
+      if (secondsLeft === 0) {
+        timeEl.textContent = " YOUR TIME IS UP!!!";
+        clearInterval(timerInterval);
+        gameOver();
+      }
+    }, 1000);
+  }
+
+  setTime();
+}
 // -------------------------------------------------------------------------
 
 let questionNumber = 0;
-let Q5 = questions.length - 1;
+let lastQuestion = questions.length - 1;
 let result = 0;
-let text = "";
 
 function displayquestions() {
   let quiz = questions;
@@ -84,9 +154,6 @@ function displayquestions() {
 
   questionsarea.innerHTML = quiz[questionNumber].question;
 
-  // for (var i = 0, length = questions.length; i < length; i++) {
-  //   text += questions[i];
-  // }
   // BRING UP THE OPTIONS..
   a.innerHTML = quiz[questionNumber].A;
   b.innerHTML = quiz[questionNumber].B;
@@ -102,15 +169,6 @@ Options.forEach((optionButton) => {
   });
 
   // ----------------------------------------------------------------------------------
-  // next BUTTON
-
-  // WORK ON THISSSSSSSS
-  let NextEl = document.createElement("button");
-  NextEl.innerHTML = "NEXT";
-  NextEl.addEventListener("click", function () {
-    console.log("clicked NEXT");
-  });
-  document.body.appendChild(NextEl);
 
   // ----------------------------------------------------------------------------------
 
@@ -149,15 +207,15 @@ Options.forEach((optionButton) => {
   function checkAns(ans) {
     console.log(ans);
 
-    // if (Q1 === Q5) {
-    //   gameOver();
-    // }
+    if (questionNumber === lastQuestion) {
+      gameOver();
+    }
     if (questions[questionNumber].ans === ans) {
       result++;
       questionNumber++;
       correctAns();
       displayquestions();
-      console.log("correct answer worked");
+      console.log("correct answer selected");
     } else {
       questionNumber++;
       wrongAns();
@@ -166,33 +224,37 @@ Options.forEach((optionButton) => {
   }
 
   function gameOver() {
-    checker.innerHTML =
-      "<div>" +
-      "YOU LOSE!!! GAME OVER! HEAD OVER TO KENNYS WORKSHOP TO LEARN MORE ABOUT JAVASCRIPT " +
-      "</div>";
+    checker.innerHTML = challengeEl.style.display = "none";
+    resultsEl.style.display = "block";
+
+    scorePercentage = secondsLeft;
+
+    const span = document.createElement("span");
+    span.textContent = scorePercentage + " points!";
+    finalScoreEl.appendChild(span);
+
+    submitBtnEl.addEventListener("click", submitInitials);
+    console.log("submit button clicked");
   }
-
-  //     var randomSelection =
-  // for (var i = 0, length = questionsarea.length; i < length; i++) {}
-  // questionsarea.innerHTML =
-  //   quiz[1].question + quiz[1].A + quiz[1].B + quiz[1].C;
-
-  // do a for loop - var = 0...something somehing fig ure out
-  // then for buttons you need to clear buttons after every answer
-
-  // MAKE SURE OPTION BUTTONS WWORK
-  // MAKE SURE YOU DEFINE THE QS IN THE BOX
-
-  // FIND OUT HOW TO STORE HIGHSCORES-INITIALS
-  // HOW TO ADD CORRECT AND INCORRECT
-
-  // WHEN TIMER REACHES 0 -GAME OVER
-  // -------------------------------------------------------------------------------
-
-  // 5;which of the following is the correct way to write "I want food" in an alert box?
-  // alertBox("I want food");
-  // msgBox("I want food");
-  // alert("I want food");
-
-  // make sure this is responsive
 });
+
+function submitInitials(event) {
+  event.preventDefault();
+  var userInput = initialEl.value.trim();
+  if (!userInput) {
+    alert("Please enter your initials first.");
+    return false;
+  }
+  var highScoreObject = {
+    name: userInput,
+    score: scorePercentage,
+  };
+  save(highScoreObject);
+  window.location.href = "highscore.html";
+}
+
+// MAKE SURE OPTION BUTTONS WWORK
+// MAKE SURE YOU DEFINE THE QS IN THE BOX
+
+// FIND OUT HOW TO STORE HIGHSCORES-INITIALS
+// HOW TO ADD CORRECT AND INCORRECT
