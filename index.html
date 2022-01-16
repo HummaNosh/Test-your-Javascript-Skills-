@@ -25,21 +25,23 @@
     <br />
 
     <div class="front" id="front">
-      <div>
+      <div id = "qsbox">
       <div id="questionsarea">
           <div id="checkAns"></div>
 
-          "Have you mastered Javascript? Click Start Quiz NOW to take the
+          Do you think you have mastered Javascript? Lets check your knowledge out, Click Start Quiz NOW to take the
           ultimate Javascript quiz and see how your results compare with your
-          Bootcamp peers!"
-      
+          Bootcamp peers!
+
+          <br>
+      <p id = "rules"> There is a twist! This is a timed quiz and for every incorrect answer 10 seconds are wiped away from your time to complete the quiz, so read carefully! Best of luck!</p>
       
             </div>
-            <div class="challenge" id="challenge">
+            <div id="challenge">
               
-            <div class="option choice1 btn"  id="a"></div>
-            <div class="option choice2 btn" id="b"></div>
-            <div class="option choice3 btn"  id="c"></div>
+            <div class="option"  id="a"></div>
+            <div class="option" id="b"></div>
+            <div class="option"  id="c"></div>
           </div>
         </div> 
       </div>
@@ -50,21 +52,23 @@
     <div id="check"></div>
           
   </div>
-    <div class="hide" id="pick">
+    <div  id="pick">
     </div>
 
     <section>
       <form action="">
-          <div class="results hide" id="results">
+          <div  id="results">
               <!-- <h2 class="done" id="done">Well Done! You have finally completed this Quiz, See below for your score</h2> -->
               <div class="finalResult" id="finalResult">
                   <p>
-                       Your final score is: <span class="finalScore" id="finalScore"></span> 
+                       Your final score <span class="finalScore" id="finalScore"></span> 
                   </p>
               </div>
+              <div id = "initialsection">
               <label for="userInitial">Enter your initials here: </label>
               <input type="text" class="userInitial" id="userInitial">
               <button class="submitBtn btn" id="submitBtn">Submit</button>
+            </div>
           </div>
       </form>
   </section>

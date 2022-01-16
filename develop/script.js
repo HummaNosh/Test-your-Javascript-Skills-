@@ -131,7 +131,7 @@ function StartQuiz() {
     var timerInterval = setInterval(function () {
       secondsLeft--;
       timeEl.textContent = secondsLeft + " seconds remaining..";
-      if (secondsLeft === 0) {
+      if (secondsLeft === 0 || questionNumber === lastQuestion) {
         timeEl.textContent = " YOUR TIME IS UP!!!";
         clearInterval(timerInterval);
         gameOver();
@@ -230,7 +230,7 @@ Options.forEach((optionButton) => {
     scorePercentage = secondsLeft;
 
     const span = document.createElement("span");
-    span.textContent = scorePercentage + " points!";
+    span.textContent = "is:" + scorePercentage + " points!";
     finalScoreEl.appendChild(span);
 
     submitBtnEl.addEventListener("click", submitInitials);

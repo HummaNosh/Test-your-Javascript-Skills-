@@ -1,11 +1,13 @@
 header {
   text-align: center;
-  padding-top: 8rem;
+  padding-top: 4rem;
 }
 
 h1 {
   font-size: 50px;
+  align-items: center;
   color: blue;
+  margin-left: -10rem;
 }
 .container {
   display: flex;
@@ -35,6 +37,7 @@ p {
   font-size: 25px;
   font-family: "Courier New", Courier, monospace;
   height: fit-content;
+  margin-left: 15rem;
 }
 
 #box {
@@ -53,14 +56,21 @@ p {
 }
 
 #questionsarea {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-left: 30rem;
   height: fit-content;
-  width: 45rem;
+  width: 50rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 40px;
 }
 
+#rules {
+  font-family: cursive;
+  font-size: 20px;
+  margin: 0;
+  margin-top: 1rem;
+  font-style: italic;
+}
 #options {
   margin-top: 10rem;
   height: fit-content;
@@ -73,7 +83,9 @@ p {
 #b,
 #c {
   font-size: 2rem;
-  width: fit-content;
+  width: 50rem;
+  border: 2px solid grey;
+  border-radius: 10px;
   background-color: red;
 }
 
@@ -90,24 +102,57 @@ p {
   color: red;
 }
 
+#initialsection {
+  margin-left: 38rem;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+p {
+  margin-left: -32rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
 @media (max-width: 768px) {
   body {
-    background-color: red;
+    background-color: pink;
     width: 50rem;
   }
 
-  header {
-    display: flex;
-  }
-
-  #box {
+  #questionsarea {
     display: flex;
     flex-direction: column;
     margin: 0;
     width: 75%;
     margin-left: 0rem;
   }
+  header {
+    display: flex;
+    margin-left: 10rem;
+    width: 75%;
+    margin-left: 0rem;
+  }
 
+  h1 {
+    margin: 0rem;
+    margin-left: 5rem;
+  }
+  .option {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 10rem;
+    margin-left: 0rem;
+  }
+
+  #a,
+  #b,
+  #c {
+    width: 20rem;
+  }
+  .comment {
+    margin: 0;
+    font-size: 1rem;
+  }
   .highscores {
     margin-left: 0;
   }
@@ -117,5 +162,17 @@ p {
 
   #start {
     margin-left: 0;
+  }
+
+  p {
+    margin-left: 0;
+  }
+  #results {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #initialsection {
+    margin: 0;
   }
 }
