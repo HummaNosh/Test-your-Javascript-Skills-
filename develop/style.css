@@ -103,13 +103,14 @@ p {
 }
 
 p {
-  margin-left: -32rem;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
-#challenge {
+#check {
   font-size: 50px;
+  margin-left: 35rem;
 }
+
 /* SCORES HTML */
 #scorestitle {
   margin-top: 5rem;
@@ -118,6 +119,10 @@ p {
 #goBack {
   font-size: 20px;
   margin-left: 54rem;
+}
+
+.finalResult {
+  margin-left: -35rem;
 }
 @media (max-width: 768px) {
   body {

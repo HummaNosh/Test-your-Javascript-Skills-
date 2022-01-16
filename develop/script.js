@@ -153,7 +153,7 @@ function StartQuiz() {
 // Value per question number...
 
 let questionNumber = 0;
-let lastQuestion = questions.length - 1;
+let lastQuestion = questions.length - 0;
 let result = 0;
 
 function displayquestions() {
@@ -230,9 +230,12 @@ Options.forEach((optionButton) => {
     }
   }
 
-  // WHY IS MY GAME OVER FUNCTION NOT WORKING?? Q10 DOESNT DISAPPEAR
+  // Game over function gives me ...
   function gameOver() {
-    checker.innerHTML = challenge.style.display = "ALL DONE";
+    questionsarea.classList.remove("questionsarea");
+
+    checker.innerHTML = challenge.style.display =
+      "Quiz over! Check your results out..";
     Results.style.display = "block";
 
     // Final score is seconds left but as points...
