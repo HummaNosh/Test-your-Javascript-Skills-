@@ -1,3 +1,9 @@
+body {
+  background-image: url(https://3.bp.blogspot.com/-R6i9VI5YQpo/W2A3goH14SI/AAAAAAAAbL4/jg1WnryX61Y7HDEurdw4nvLn1w7t0gk8QCEwYBhgL/s640/Laughing%2Bkookaburra-6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 header {
   text-align: center;
   padding-top: 4rem;
@@ -40,22 +46,14 @@ p {
   margin-left: 15rem;
 }
 
-#box {
-  width: 50rem;
-  height: 20rem;
-  margin: 0;
-  margin-left: 28rem;
-  display: flex;
-  justify-content: center;
-  outline: dashed 1px black;
-}
-
 #start {
   margin: 0;
   margin-left: 50rem;
 }
 
 #questionsarea {
+  background-color: #20b2aa;
+  opacity: 0.7;
   margin-top: 1rem;
   margin-left: 30rem;
   height: fit-content;
