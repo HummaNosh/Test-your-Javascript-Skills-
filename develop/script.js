@@ -232,7 +232,9 @@ Options.forEach((optionButton) => {
 
   // Game over function gives me ...
   function gameOver() {
-    questionsarea.classList.remove("questionsarea");
+    // below not working...
+    questionsarea.className = "questionsareabox";
+    questionsarea.classList.remove("questionsareabox");
 
     checker.innerHTML = challenge.style.display =
       "Quiz over! Check your results out..";
