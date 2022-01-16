@@ -1,5 +1,5 @@
-body {
-  background-image: url(https://3.bp.blogspot.com/-R6i9VI5YQpo/W2A3goH14SI/AAAAAAAAbL4/jg1WnryX61Y7HDEurdw4nvLn1w7t0gk8QCEwYBhgL/s640/Laughing%2Bkookaburra-6.jpg);
+html {
+  background-image: url(https://tse1.mm.bing.net/th?id=OIP.QX2HYZ74Nd81-lTxkRC2GAHaDl&pid=Api&P=0&w=377&h=183);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -24,8 +24,6 @@ h2 {
   text-align: center;
 }
 
-#time {
-}
 .highscores {
   width: fit-content;
   height: 5rem;
@@ -36,7 +34,7 @@ h2 {
 .timer {
   width: 10rem;
   height: 5rem;
-  margin-left: 28rem;
+  margin-left: 25rem;
 }
 p {
   text-align: center;
@@ -52,8 +50,6 @@ p {
 }
 
 #questionsarea {
-  background-color: #20b2aa;
-  opacity: 0.7;
   margin-top: 1rem;
   margin-left: 30rem;
   height: fit-content;
@@ -109,6 +105,10 @@ p {
 p {
   margin-left: -32rem;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+#challenge {
+  font-size: 50px;
 }
 /* SCORES HTML */
 #scorestitle {

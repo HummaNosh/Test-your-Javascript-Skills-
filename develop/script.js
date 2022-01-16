@@ -3,6 +3,7 @@ let startBtn = document.getElementById("start");
 // Job of the button
 startBtn.addEventListener("click", function () {
   StartQuiz();
+  startBtn.classList.remove("startbutton");
 });
 
 // ALL VARIABLES AND ELEMENTS.....
@@ -106,6 +107,11 @@ let questions = [
     C: "C. function = Hello()",
     ans: "A. function Hello()",
   },
+
+  // {
+
+  //     "ALL DONE! GOOD GOING! CHECK YOUR FINAL SCORE BELOW..ENTER YOUR INITIALS AND SEE HOW YOU COMPARE WITH YOUR BOOTCAMP PEERS IN THE SCORES TAB!",
+  // },
 ];
 
 // -----------------------------------------------------------------
@@ -133,15 +139,16 @@ function StartQuiz() {
       secondsLeft--;
       timeEl.textContent = secondsLeft + " seconds remaining..";
       if (secondsLeft === 0 || questionNumber === lastQuestion) {
-        timeEl.textContent = " YOUR TIME IS UP!!!";
+        timeEl.textContent = "GAME OVER! YOUR TIME IS UP!!!";
         clearInterval(timerInterval);
-        gameOver();
       }
+      gameOver();
     }, 1000);
   }
 
   setTime();
 }
+
 // -------------------------------------------------------------------------
 // Value per question number...
 
@@ -225,7 +232,7 @@ Options.forEach((optionButton) => {
 
   // WHY IS MY GAME OVER FUNCTION NOT WORKING?? Q10 DOESNT DISAPPEAR
   function gameOver() {
-    checker.innerHTML = challenge.style.display = "none";
+    checker.innerHTML = challenge.style.display = "ALL DONE";
     Results.style.display = "block";
 
     // Final score is seconds left but as points...
@@ -246,7 +253,7 @@ function submitInitials(event) {
   event.preventDefault();
   var userInput = InitialEl.value.trim();
   if (!userInput) {
-    alert("Please enter your initials first.");
+    alert("Please enter your initials ");
     return false;
   }
   var ScoreBox = {
