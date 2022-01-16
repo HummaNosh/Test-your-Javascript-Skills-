@@ -14,12 +14,12 @@ let c = document.querySelector("#c");
 let Options = document.querySelectorAll(".option");
 let Pick = document.querySelector("#pick");
 let checker = document.querySelector("#check");
-let initialEl = document.getElementById("userInitial");
-let challengeEl = document.getElementById("challenge");
-let resultsEl = document.getElementById("results");
-var finalScoreEl = document.querySelector(".finalScore");
-let submitBtnEl = document.querySelector("#submitBtn");
-let scorePercentage = "";
+let InitialEl = document.getElementById("userInitial");
+let challenge = document.getElementById("challenge");
+let Results = document.getElementById("results");
+var FinalScore = document.querySelector(".finalScore");
+let SubmitBtn = document.querySelector("#submitBtn");
+let ScorePoints = "";
 
 // MULTI CHOICE QUESTIONS
 let questions = [
@@ -109,7 +109,6 @@ let questions = [
 ];
 
 // -----------------------------------------------------------------
-// Start...
 
 // TIMER JOB..
 console.log("Button clicked, timer ON");
@@ -118,13 +117,15 @@ var timeEl = document.getElementById("time");
 // how many seconds
 var secondsLeft = 50;
 
+// Start...
+
 function StartQuiz() {
   displayquestions();
   setTime();
 
   // -------------------------------------------------------------------
 
-  // THIS GOES TO MINUS
+  // THIS GOES TO MINUS changeeee
 
   // Timer function
   function setTime() {
@@ -142,6 +143,7 @@ function StartQuiz() {
   setTime();
 }
 // -------------------------------------------------------------------------
+// Value per question number...
 
 let questionNumber = 0;
 let lastQuestion = questions.length - 1;
@@ -159,7 +161,6 @@ function displayquestions() {
   b.innerHTML = quiz[questionNumber].B;
   c.innerHTML = quiz[questionNumber].C;
 }
-// var randomSelection =
 
 // BRING UP THE OPTIONS AND CHECK IF THE ANSWER IS CORRECT
 Options.forEach((optionButton) => {
@@ -167,8 +168,6 @@ Options.forEach((optionButton) => {
     let selectedbyuser = optionButton.textContent;
     checkAns(selectedbyuser);
   });
-
-  // ----------------------------------------------------------------------------------
 
   // ----------------------------------------------------------------------------------
 
@@ -204,6 +203,7 @@ Options.forEach((optionButton) => {
   }
 
   // -----------------------------------------------------------------
+  // Checking the answer is correct,if so do the below...
   function checkAns(ans) {
     console.log(ans);
 
@@ -223,38 +223,43 @@ Options.forEach((optionButton) => {
     }
   }
 
+  // WHY IS MY GAME OVER FUNCTION NOT WORKING?? Q10 DOESNT DISAPPEAR
   function gameOver() {
-    checker.innerHTML = challengeEl.style.display = "none";
-    resultsEl.style.display = "block";
+    checker.innerHTML = challenge.style.display = "none";
+    Results.style.display = "block";
 
-    scorePercentage = secondsLeft;
+    // Final score is seconds left but as points...
+    ScorePoints = secondsLeft;
 
-    const span = document.createElement("span");
-    span.textContent = "is:" + scorePercentage + " points!";
-    finalScoreEl.appendChild(span);
+    let pointssection = document.createElement("span");
+    pointssection.textContent = "is:" + ScorePoints + " points!";
+    FinalScore.appendChild(pointssection);
 
-    submitBtnEl.addEventListener("click", submitInitials);
+    // Submitting initials
+    SubmitBtn.addEventListener("click", submitInitials, SaveData());
     console.log("submit button clicked");
   }
 });
 
+// Submit initials and save on scores html
 function submitInitials(event) {
   event.preventDefault();
-  var userInput = initialEl.value.trim();
+  var userInput = InitialEl.value.trim();
   if (!userInput) {
     alert("Please enter your initials first.");
     return false;
   }
-  var highScoreObject = {
+  var ScoreBox = {
     name: userInput,
-    score: scorePercentage,
+    score: ScorePoints,
   };
-  save(highScoreObject);
-  window.location.href = "highscore.html";
+  SaveData(ScoreBox);
+  window.location.href = "scores.html";
 }
 
-// MAKE SURE OPTION BUTTONS WWORK
-// MAKE SURE YOU DEFINE THE QS IN THE BOX
-
-// FIND OUT HOW TO STORE HIGHSCORES-INITIALS
-// HOW TO ADD CORRECT AND INCORRECT
+// Shove all submitted data to scores html
+function SaveData(ALL) {
+  let storage = JSON.parse(localStorage.getItem("scores")) || [];
+  storage.push(ALL);
+  localStorage.setItem("scores", JSON.stringify(storage));
+}

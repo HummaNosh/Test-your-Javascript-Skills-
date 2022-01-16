@@ -112,6 +112,15 @@ p {
   margin-left: -32rem;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+/* SCORES HTML */
+#scorestitle {
+  margin-top: 5rem;
+  color: red;
+}
+#goBack {
+  font-size: 20px;
+  margin-left: 54rem;
+}
 @media (max-width: 768px) {
   body {
     background-color: pink;
