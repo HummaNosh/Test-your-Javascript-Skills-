@@ -24,4 +24,7 @@ THEN I can save my initials and my score
 
 A rough screenshot of the Quiz is below: 
 
+![image](https://user-images.githubusercontent.com/93604239/149671576-3056d798-74a5-42bf-b525-6ed503aa84c2.png)
+![image](https://user-images.githubusercontent.com/93604239/149671582-647eb5c9-f764-46ed-9333-697099a10586.png)
+
 Deployed Link: https://hummanosh.github.io/Test-your-Javascript-Skills-/
