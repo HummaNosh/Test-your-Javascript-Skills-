@@ -19,6 +19,7 @@ let challenge = document.getElementById("challenge");
 let Results = document.getElementById("results");
 var FinalScore = document.querySelector(".finalScore");
 let SubmitBtn = document.querySelector("#submitBtn");
+let highscores = document.querySelector("scores");
 let ScorePoints = "";
 
 // MULTI CHOICE QUESTIONS
@@ -146,8 +147,6 @@ function StartQuiz() {
       gameOver();
     }, 1000);
   }
-
-  setTime();
 }
 
 // -------------------------------------------------------------------------
@@ -266,7 +265,7 @@ Options.forEach((optionButton) => {
       score: ScorePoints,
     };
     SaveData(ScoreBox);
-    window.location.href = "scores.html";
+    window.location.href = "scores";
   }
 
   // Shove all submitted data to scores html
