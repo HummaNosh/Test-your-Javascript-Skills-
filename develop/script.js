@@ -257,7 +257,7 @@ Options.forEach((optionButton) => {
       score: ScorePoints,
     };
     SaveData(ScoreBox);
-    window.location.href = "scores";
+    window.location.href = "scores.html";
   }
 
   // Shove all submitted data to scores html
