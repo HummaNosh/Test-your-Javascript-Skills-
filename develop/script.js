@@ -3,7 +3,6 @@ let startBtn = document.getElementById("start");
 // Job of the button
 startBtn.addEventListener("click", function () {
   StartQuiz();
-  startBtn.classList.remove("startbutton");
 });
 
 // ALL VARIABLES AND ELEMENTS.....
@@ -126,6 +125,8 @@ var secondsLeft = 50;
 // Start...
 
 function StartQuiz() {
+  // why does the button not remove?
+  startBtn.removeAttribute("startbutton");
   displayquestions();
   setTime();
 
@@ -212,8 +213,6 @@ Options.forEach((optionButton) => {
   // -----------------------------------------------------------------
   // Checking the answer is correct,if so do the below...
   function checkAns(ans) {
-    console.log(ans);
-
     if (questionNumber === lastQuestion) {
       gameOver();
     }
@@ -248,30 +247,32 @@ Options.forEach((optionButton) => {
     FinalScore.appendChild(pointssection);
 
     // Submitting initials
-    SubmitBtn.addEventListener("click", submitInitials, SaveData());
+    SubmitBtn.addEventListener("click", submitInitials);
     console.log("submit button clicked");
   }
-});
 
-// Submit initials and save on scores html
-function submitInitials(event) {
-  event.preventDefault();
-  var userInput = InitialEl.value.trim();
-  if (!userInput) {
-    alert("Please enter your initials ");
-    return false;
+  // Submit initials and save on scores html
+  function submitInitials(event) {
+    event.preventDefault();
+
+    // when the user puts something in the initials box..
+    var userInput = InitialEl.value.trim();
+    if (!userInput) {
+      alert("Please enter your initials ");
+      return false;
+    }
+    var ScoreBox = {
+      name: userInput,
+      score: ScorePoints,
+    };
+    SaveData(ScoreBox);
+    window.location.href = "scores.html";
   }
-  var ScoreBox = {
-    name: userInput,
-    score: ScorePoints,
-  };
-  SaveData(ScoreBox);
-  window.location.href = "scores.html";
-}
 
-// Shove all submitted data to scores html
-function SaveData(ALL) {
-  let storage = JSON.parse(localStorage.getItem("scores")) || [];
-  storage.push(ALL);
-  localStorage.setItem("scores", JSON.stringify(storage));
-}
+  // Shove all submitted data to scores html
+  function SaveData(data) {
+    let storage = JSON.parse(localStorage.getItem("scores")) || [];
+    storage.push(data);
+    localStorage.setItem("scores", JSON.stringify(storage));
+  }
+});

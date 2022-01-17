@@ -4,16 +4,19 @@ html {
   background-size: cover;
 }
 
+body {
+  margin: 0;
+}
+
 header {
   text-align: center;
-  padding-top: 4rem;
 }
 
 h1 {
   font-size: 50px;
   align-items: center;
   color: blue;
-  margin-left: -10rem;
+  margin-left: -8rem;
 }
 .container {
   display: flex;
@@ -29,7 +32,7 @@ h2 {
   height: 5rem;
   display: flex;
   flex-direction: row;
-  margin-left: 30rem;
+  margin-left: 20rem;
 }
 .timer {
   width: 10rem;
@@ -46,12 +49,11 @@ p {
 
 #start {
   margin: 0;
-  margin-left: 50rem;
+  margin-left: 42rem;
 }
 
 #questionsarea {
-  margin-top: 1rem;
-  margin-left: 30rem;
+  margin-left: 20rem;
   height: fit-content;
   width: 50rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -81,6 +83,7 @@ p {
   border: 2px solid grey;
   border-radius: 10px;
   background-color: red;
+  margin-left: 20rem;
 }
 
 .option {
@@ -97,9 +100,10 @@ p {
 }
 
 #initialsection {
-  margin-left: 38rem;
+  margin-left: 28rem;
   font-style: italic;
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 p {
@@ -108,7 +112,7 @@ p {
 
 #check {
   font-size: 50px;
-  margin-left: 35rem;
+  margin-left: 23rem;
 }
 
 /* SCORES HTML */
@@ -124,6 +128,7 @@ p {
 .finalResult {
   margin-left: -35rem;
 }
+
 @media (max-width: 768px) {
   body {
     background-color: pink;
