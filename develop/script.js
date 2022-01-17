@@ -3,6 +3,7 @@ let startBtn = document.getElementById("start");
 // Job of the button
 startBtn.addEventListener("click", function () {
   StartQuiz();
+  $("#start").remove();
 });
 
 // ALL VARIABLES AND ELEMENTS.....
@@ -107,11 +108,6 @@ let questions = [
     C: "C. function = Hello()",
     ans: "A. function Hello()",
   },
-
-  // {
-
-  //     "ALL DONE! GOOD GOING! CHECK YOUR FINAL SCORE BELOW..ENTER YOUR INITIALS AND SEE HOW YOU COMPARE WITH YOUR BOOTCAMP PEERS IN THE SCORES TAB!",
-  // },
 ];
 
 // -----------------------------------------------------------------
@@ -230,10 +226,6 @@ Options.forEach((optionButton) => {
 
   // Game over function gives me ...
   function gameOver() {
-    // below not working...
-    questionsarea.className = "questionsareabox";
-    questionsarea.classList.remove("questionsareabox");
-
     checker.innerHTML = challenge.style.display =
       "Quiz over! Check your results out..";
     Results.style.display = "block";
@@ -242,7 +234,7 @@ Options.forEach((optionButton) => {
     ScorePoints = secondsLeft;
 
     let pointssection = document.createElement("span");
-    pointssection.textContent = "is:" + ScorePoints + " points!";
+    pointssection.textContent = "is: " + ScorePoints + " points!";
     FinalScore.appendChild(pointssection);
 
     // Submitting initials
