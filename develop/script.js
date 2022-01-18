@@ -140,7 +140,6 @@ function StartQuiz() {
         timeEl.textContent = "GAME OVER! YOUR TIME IS UP!!!";
         clearInterval(timerInterval);
       }
-      gameOver();
     }, 1000);
   }
 }
@@ -248,10 +247,7 @@ Options.forEach((optionButton) => {
 
     // when the user puts something in the initials box..
     var userInput = InitialEl.value.trim();
-    if (!userInput) {
-      alert("Please enter your initials ");
-      return false;
-    }
+
     var ScoreBox = {
       name: userInput,
       score: ScorePoints,
