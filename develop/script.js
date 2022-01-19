@@ -253,13 +253,14 @@ Options.forEach((optionButton) => {
       score: ScorePoints,
     };
     SaveData(ScoreBox);
-    window.location.href = "/develop/scores.html";
+    window.location.href = "develop/scores.html";
   }
 
   // Shove all submitted data to scores html
   function SaveData(data) {
-    let storage = JSON.parse(localStorage.getItem("scores")) || [];
+    let storage =
+      JSON.parse(localStorage.getItem("/develop/scores.html")) || [];
     storage.push(data);
-    localStorage.setItem("scores", JSON.stringify(storage));
+    localStorage.setItem("/develop/scores.html", JSON.stringify(storage));
   }
 });
